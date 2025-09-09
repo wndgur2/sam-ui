@@ -1,9 +1,9 @@
-import React from "react";
 import { useLocation } from "react-router-dom";
 import {
   Stack,
   Flex,
   Button,
+  IconButton,
   TextInput,
   Textarea,
   Select,
@@ -24,22 +24,53 @@ import {
   Progress,
   Avatar,
   Alert,
+  Text,
+  Heading,
 } from "@sam/ui";
 import { ThemeControls } from "../sections/ThemeControls";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export function ComponentsPage() {
-  const [open, setOpen] = React.useState(false);
-  const [btnVariant, setBtnVariant] = React.useState<"solid" | "outline" | "ghost">("solid");
-  const [btnSize, setBtnSize] = React.useState<"sm" | "md" | "lg">("md");
+  const [open, setOpen] = useState(false);
+  const [btnVariant, setBtnVariant] = useState<"solid" | "outline" | "ghost">("solid");
+  const [btnSize, setBtnSize] = useState<"sm" | "md" | "lg">("md");
   const location = useLocation();
+  const navigate = useNavigate();
+  const [alertVariant, setAlertVariant] = useState<"info"|"success"|"warning"|"danger">("info");
+  const [alertText, setAlertText] = useState("Useful information.");
+  const [progress, setProgress] = useState(62);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (location.hash) {
       const id = location.hash.replace(/^#/, "");
       const el = document.getElementById(id);
       if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   }, [location.hash]);
+
+  useEffect(() => {
+    const ids = [
+      "typography","button","iconbutton","textinput","select","badge","spinner","alert","tabs","layout","modal","divider","card","progress","avatar"
+    ];
+    const elements = ids.map((id) => document.getElementById(id)).filter(Boolean) as HTMLElement[];
+    if (elements.length === 0) return;
+    let current = location.hash.replace(/^#/, "");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        if (visible && visible.target.id && visible.target.id !== current) {
+          current = visible.target.id;
+          navigate(`/docs/components#${current}`, { replace: true });
+        }
+      },
+      { root: null, threshold: [0.4], rootMargin: "0px 0px -40% 0px" },
+    );
+    elements.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, [navigate]);
   return (
     <Stack gap={24}>
       <div>
@@ -51,6 +82,19 @@ export function ComponentsPage() {
         <p>Toggle dark mode and try your brand primary color.</p>
         <ThemeControls />
       </section>
+      <section id="typography">
+        <h2>Typography</h2>
+        <Stack gap={8}>
+          <Heading size="lg">Heading LG</Heading>
+          <Heading>Heading MD</Heading>
+          <Heading size="sm">Heading SM</Heading>
+          <Text size="lg">Body LG</Text>
+          <Text>Body MD</Text>
+          <Text size="sm" muted>
+            Body SM Muted
+          </Text>
+        </Stack>
+      </section>
       <section id="button">
         <h2>Button</h2>
         <Flex gap={8} style={{ flexWrap: "wrap" }}>
@@ -60,6 +104,15 @@ export function ComponentsPage() {
           <Button size="sm">Small</Button>
           <Button size="lg">Large</Button>
         </Flex>
+        <div style={{ height: 8 }} />
+        <h3>IconButton</h3>
+        <section id="iconbutton">
+          <Flex gap={8}>
+            <IconButton aria-label="settings" icon={<span>⚙️</span>} />
+            <IconButton aria-label="like" icon={<span>❤</span>} variant="solid" />
+            <IconButton aria-label="more" icon={<span>⋯</span>} size="lg" />
+          </Flex>
+        </section>
         <div style={{ height: 12 }} />
         <h3>Playground</h3>
         <Flex gap={12} align="center" style={{ flexWrap: "wrap" }}>
@@ -130,29 +183,48 @@ export function ComponentsPage() {
         <h2>Spinner & Progress</h2>
         <Spinner />
         <div style={{ height: 12 }} />
-        <Progress value={62} />
+        <label>
+          Value: {progress}%
+          <input
+            type="range"
+            min={0}
+            max={100}
+            value={progress}
+            onChange={(e) => setProgress(parseInt(e.target.value))}
+            style={{ marginLeft: 8 }}
+          />
+        </label>
+        <Progress value={progress} />
       </section>
       <section id="alert">
         <h2>Alert</h2>
         <Stack gap={8}>
+          <Flex gap={12} align="center" style={{ flexWrap: "wrap" }}>
+            <label>
+              Variant:
+              <select
+                value={alertVariant}
+                onChange={(e) => setAlertVariant(e.target.value as any)}
+                style={{ marginLeft: 8 }}
+              >
+                <option value="info">info</option>
+                <option value="success">success</option>
+                <option value="warning">warning</option>
+                <option value="danger">danger</option>
+              </select>
+            </label>
+            <label>
+              Message:
+              <input
+                value={alertText}
+                onChange={(e) => setAlertText(e.target.value)}
+                style={{ marginLeft: 8 }}
+              />
+            </label>
+          </Flex>
           <Card>
-            <Alert title="Info" variant="info">
-              Useful information.
-            </Alert>
-          </Card>
-          <Card>
-            <Alert title="Success" variant="success">
-              Operation completed.
-            </Alert>
-          </Card>
-          <Card>
-            <Alert title="Warning" variant="warning">
-              Check your inputs.
-            </Alert>
-          </Card>
-          <Card>
-            <Alert title="Danger" variant="danger">
-              Something went wrong.
+            <Alert title={alertVariant.toUpperCase()} variant={alertVariant}>
+              {alertText}
             </Alert>
           </Card>
         </Stack>

@@ -1,0 +1,12 @@
+.root { display:inline-flex; align-items:center; justify-content:center; border-radius: var(--ui-radius-md); border:1px solid transparent; background: transparent; color: var(--ui-color-fg); cursor: pointer; transition: filter .15s; }
+.root:focus-visible { outline:2px solid transparent; box-shadow:0 0 0 3px var(--ui-focus); }
+.root:disabled { opacity:.6; cursor:not-allowed; }
+.solid { background: var(--ui-color-primary); color: #fff; }
+.solid:hover { filter:brightness(.95); }
+.outline { border-color: var(--ui-color-border); }
+.outline:hover { background: var(--ui-color-muted); }
+.ghost:hover { background: var(--ui-color-muted); }
+.sm { width:28px; height:28px; }
+.md { width:34px; height:34px; }
+.lg { width:40px; height:40px; }
+

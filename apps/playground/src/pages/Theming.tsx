@@ -1,4 +1,3 @@
-import React from "react";
 import { Stack } from "@sam/ui";
 import { ThemeControls } from "../sections/ThemeControls";
 
@@ -11,4 +10,3 @@ export function Theming() {
     </Stack>
   );
 }
-

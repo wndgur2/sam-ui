@@ -1,4 +1,3 @@
-import React from "react";
 import { Stack, Alert } from "@sam/ui";
 import { CodeBlock } from "../components/CodeBlock";
 
@@ -16,8 +15,9 @@ export function GettingStarted() {
         <h2>Quick Start</h2>
         <CodeBlock code={quickStart} />
       </div>
-      <Alert title="Note">During development, the playground aliases @sam/ui to source for fast HMR.</Alert>
+      <Alert title="Note">
+        During development, the playground aliases @sam/ui to source for fast HMR.
+      </Alert>
     </Stack>
   );
 }
-
