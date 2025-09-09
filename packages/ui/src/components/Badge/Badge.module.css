@@ -1,0 +1,6 @@
+.badge { display:inline-flex; align-items:center; gap:6px; padding:2px 8px; border-radius:999px; font-size:12px; font-weight:600; }
+.neutral { background: var(--ui-color-muted); color: var(--ui-color-fg); }
+.success { background: color-mix(in srgb, var(--ui-color-success) 16%, white); color: var(--ui-color-success); }
+.warning { background: color-mix(in srgb, var(--ui-color-warning) 16%, white); color: var(--ui-color-warning); }
+.danger { background: color-mix(in srgb, var(--ui-color-danger) 16%, white); color: var(--ui-color-danger); }
+

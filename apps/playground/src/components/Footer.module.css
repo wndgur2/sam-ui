@@ -1,0 +1,7 @@
+.footer { border-top:1px solid var(--ui-color-border); padding: 24px 0; margin-top: 48px; }
+.inner { display:flex; align-items:center; justify-content:space-between; gap:16px; }
+.muted { opacity:.75; }
+.links { display:flex; gap:12px; }
+.link { color: var(--ui-color-fg); text-decoration:none; opacity:.9; }
+.link:hover { text-decoration:underline; }
+

@@ -1,0 +1,36 @@
+.hero {
+  position: relative;
+  padding: 80px 0 40px;
+  background:
+    radial-gradient(1200px 600px at 50% -200px, color-mix(in srgb, var(--ui-color-primary) 18%, transparent), transparent),
+    linear-gradient(180deg, color-mix(in srgb, var(--ui-color-muted) 30%, transparent), transparent 60%);
+  border-bottom: 1px solid var(--ui-color-border);
+}
+.container { max-width: 1100px; margin: 0 auto; padding: 0 16px; }
+.kicker { font-size: 12px; text-transform: uppercase; letter-spacing: .12em; opacity:.7; }
+.title { font-size: 56px; line-height: 1.05; letter-spacing: -0.02em; margin: 0; }
+.subtitle { font-size: 18px; opacity: .85; margin: 0; }
+.heroGrid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 24px; align-items: center; }
+@media (max-width: 800px) { .heroGrid { grid-template-columns: 1fr; } .title { font-size: 40px; } }
+
+.pill { display:inline-flex; align-items:center; gap:8px; padding:4px 10px; border-radius:999px; background: var(--ui-color-muted); font-size:12px; }
+.mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
+.section { padding: 48px 0; }
+.cards { display:grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap:16px; }
+@media (max-width: 1024px) { .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 640px) { .cards { grid-template-columns: 1fr; } }
+.card { border:1px solid var(--ui-color-border); border-radius: 12px; padding: 16px; background: var(--ui-color-bg); }
+.card h3 { margin: 0 0 6px; font-size: 16px; }
+.muted { opacity: .85; }
+.eyebrow { font-size: 12px; text-transform: uppercase; letter-spacing: .12em; opacity:.7; }
+.code { border:1px solid var(--ui-color-border); border-radius: 12px; overflow: hidden; }
+.code pre { margin:0; padding: 16px; background: var(--ui-color-muted); overflow:auto; }
+.features { display:grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap:16px; }
+@media (max-width: 1024px) { .features { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 640px) { .features { grid-template-columns: 1fr; } }
+.feature { border:1px solid var(--ui-color-border); border-radius: 12px; padding: 16px; }
+.feature h3 { margin: 0 0 6px; font-size: 16px; }
+
+.sources { display:grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap:16px; }
+@media (max-width: 800px) { .sources { grid-template-columns: 1fr; } }
+
