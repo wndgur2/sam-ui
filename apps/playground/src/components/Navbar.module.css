@@ -1,7 +1,6 @@
 .nav { position: sticky; top: 0; z-index: 50; backdrop-filter: saturate(180%) blur(10px); background: color-mix(in srgb, var(--ui-color-bg) 75%, transparent); border-bottom: 1px solid var(--ui-color-border); }
-.inner { display:flex; align-items:center; justify-content:space-between; gap:16px; height:56px; }
+.inner { display:flex; align-items:center; justify-content:space-between; gap:12px; height:52px; }
 .brand { font-weight: 800; letter-spacing: -0.02em; }
 .links { display:flex; align-items:center; gap: 16px; }
-.link { color: var(--ui-color-fg); text-decoration:none; opacity:.9; }
+.link { color: var(--ui-color-fg); text-decoration:none; opacity:.85; }
 .link:hover { text-decoration:underline; }
-

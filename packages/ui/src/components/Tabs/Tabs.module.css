@@ -1,6 +1,5 @@
 .list { display:flex; gap:8px; border-bottom:1px solid var(--ui-color-border); }
-.tab { background:transparent; border:none; border-bottom:2px solid transparent; padding:8px 10px; cursor:pointer; color: var(--ui-color-fg); }
+.tab { background:transparent; border:none; border-bottom:2px solid transparent; padding:6px 10px; cursor:pointer; color: var(--ui-color-fg); }
 .tab[aria-selected="true"] { border-color: var(--ui-color-primary); font-weight:700; }
 .panels { padding:10px 0; }
 .panel { display:block; }
-

@@ -15,11 +15,22 @@ export const ThemeProvider: React.FC<Props> = ({ theme, className, children }) =
 };
 
 export function useThemeMode() {
-  const root = React.useRef<HTMLElement | null>(null);
-  React.useEffect(() => {
-    root.current = document.querySelector("[data-ui-theme]") as HTMLElement | null;
-  }, []);
-  const setDark = (on: boolean) => root.current?.classList.toggle("ui-dark", on);
-  return { setDark };
+  function getRoot(): HTMLElement {
+    return (
+      (document.querySelector("[data-ui-theme]") as HTMLElement | null) ||
+      (document.documentElement as HTMLElement)
+    );
+  }
+  const setDark = (on: boolean) => {
+    const root = getRoot();
+    root.classList.toggle("ui-dark", on);
+  };
+  const toggleDark = () => {
+    const root = getRoot();
+    const next = !root.classList.contains("ui-dark");
+    root.classList.toggle("ui-dark", next);
+    return next;
+  };
+  const isDark = () => getRoot().classList.contains("ui-dark");
+  return { setDark, toggleDark, isDark };
 }
-

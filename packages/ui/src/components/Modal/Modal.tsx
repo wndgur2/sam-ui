@@ -4,9 +4,16 @@ import s from "./Modal.module.css";
 
 function getFocusable(container: HTMLElement): HTMLElement[] {
   const sel = [
-    'a[href]','button:not([disabled])','input:not([disabled])','select:not([disabled])','textarea:not([disabled])','[tabindex]:not([tabindex="-1"])'
-  ].join(',');
-  return Array.from(container.querySelectorAll<HTMLElement>(sel)).filter((el) => !el.hasAttribute('disabled') && !el.getAttribute('aria-hidden'));
+    "a[href]",
+    "button:not([disabled])",
+    "input:not([disabled])",
+    "select:not([disabled])",
+    "textarea:not([disabled])",
+    '[tabindex]:not([tabindex="-1"])',
+  ].join(",");
+  return Array.from(container.querySelectorAll<HTMLElement>(sel)).filter(
+    (el) => !el.hasAttribute("disabled") && !el.getAttribute("aria-hidden"),
+  );
 }
 
 export interface ModalProps {
@@ -29,7 +36,10 @@ export function Modal({ isOpen, onClose, title, children, ariaLabelledBy }: Moda
       const focusables = getFocusable(content);
       (focusables[0] ?? content).focus();
       const onKey = (e: KeyboardEvent) => {
-        if (e.key === "Escape") { e.preventDefault(); onClose(); }
+        if (e.key === "Escape") {
+          e.preventDefault();
+          onClose();
+        }
         if (e.key === "Tab") {
           const els = getFocusable(content);
           if (els.length === 0) return;
@@ -53,10 +63,23 @@ export function Modal({ isOpen, onClose, title, children, ariaLabelledBy }: Moda
     <div
       className={s.overlay}
       ref={overlayRef}
-      onMouseDown={(e) => { if (e.target === overlayRef.current) onClose(); }}
+      onMouseDown={(e) => {
+        if (e.target === overlayRef.current) onClose();
+      }}
     >
-      <div role="dialog" aria-modal="true" aria-labelledby={ariaLabelledBy} className={s.content} ref={contentRef} tabIndex={-1}>
-        {title && <div className={s.header} id={ariaLabelledBy}>{title}</div>}
+      <div
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby={ariaLabelledBy}
+        className={s.content}
+        ref={contentRef}
+        tabIndex={-1}
+      >
+        {title && (
+          <div className={s.header} id={ariaLabelledBy}>
+            {title}
+          </div>
+        )}
         <div className={s.body}>{children}</div>
       </div>
     </div>

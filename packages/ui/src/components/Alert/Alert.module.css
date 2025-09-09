@@ -1,7 +1,7 @@
 .alert {
   border: 1px solid;
   border-radius: 10px;
-  padding: 10px 12px;
+  padding: 8px 10px;
   display: flex;
   gap: 10px;
   align-items: flex-start;
@@ -28,13 +28,13 @@
 }
 
 .warning {
-  background: color-mix(in srgb, var(--ui-color-warning) 10%, white);
-  border-color: color-mix(in srgb, var(--ui-color-warning) 40%, white);
+  background: color-mix(in srgb, var(--ui-color-warning) 10%, var(--ui-color-bg));
+  border-color: color-mix(in srgb, var(--ui-color-warning) 40%, var(--ui-color-bg));
   color: var(--ui-color-fg);
 }
 
 .danger {
-  background: color-mix(in srgb, var(--ui-color-danger) 10%, white);
-  border-color: color-mix(in srgb, var(--ui-color-danger) 40%, white);
+  background: color-mix(in srgb, var(--ui-color-danger) 10%, var(--ui-color-bg));
+  border-color: color-mix(in srgb, var(--ui-color-danger) 40%, var(--ui-color-bg));
   color: var(--ui-color-fg);
 }

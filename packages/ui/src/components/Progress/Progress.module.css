@@ -1,0 +1,3 @@
+.track { height: 8px; border-radius:999px; background: var(--ui-color-muted); overflow:hidden; width:100%; }
+.bar { height:100%; background: var(--ui-color-primary); width: var(--ui-progress, 0%); transition: width .2s; }
+

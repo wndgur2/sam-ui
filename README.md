@@ -17,3 +17,7 @@ Scripts
 Tech
 
 - React 18+, TypeScript, Vite, Vitest + RTL, ESLint + Prettier, PostCSS + Autoprefixer, pnpm
+
+ETC
+
+- This Project is vibe-coded with codex.

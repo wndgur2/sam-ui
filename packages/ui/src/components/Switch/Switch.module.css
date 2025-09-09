@@ -1,8 +1,7 @@
 .label { display:inline-flex; align-items:center; gap:8px; cursor:pointer; }
-.track { position:relative; width:38px; height:22px; background: var(--ui-color-border); border-radius:999px; transition:background .2s; }
-.thumb { position:absolute; top:2px; left:2px; width:18px; height:18px; border-radius:999px; background: #fff; transition: transform .2s; box-shadow: 0 1px 2px rgba(0,0,0,.25); }
+.track { position:relative; width:34px; height:20px; background: var(--ui-color-border); border-radius:999px; transition:background .2s; }
+.thumb { position:absolute; top:2px; left:2px; width:16px; height:16px; border-radius:999px; background: #fff; transition: transform .2s; box-shadow: 0 1px 2px rgba(0,0,0,.25); }
 .checked .track { background: var(--ui-color-primary); }
-.checked .thumb { transform: translateX(16px); }
+.checked .thumb { transform: translateX(14px); }
 .input { position:absolute; opacity:0; width:1px; height:1px; pointer-events:none; }
-.text { color: var(--ui-color-fg); }
-
+.text { color: var(--ui-color-fg); font-size: 14px; }

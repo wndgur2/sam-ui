@@ -1,0 +1,104 @@
+.shell {
+  min-height: 100vh;
+  background: var(--ui-color-bg);
+  color: var(--ui-color-fg);
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.section {
+  padding: 56px 0;
+  border-bottom: 1px solid var(--ui-color-border);
+}
+
+.hero {
+  padding: 80px 0 48px;
+  background:
+    radial-gradient(1200px 600px at 50% -200px, color-mix(in srgb, var(--ui-color-primary) 14%, transparent), transparent),
+    linear-gradient(180deg, color-mix(in srgb, var(--ui-color-muted) 24%, transparent), transparent 60%);
+  border-bottom: 1px solid var(--ui-color-border);
+}
+
+.kicker {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  opacity: .7;
+}
+
+.title {
+  font-size: 48px;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.subtitle {
+  font-size: 16px;
+  opacity: .85;
+  margin: 0;
+  max-width: 720px;
+}
+
+.heroGrid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 32px;
+  align-items: center;
+}
+
+@media (max-width: 960px) {
+  .heroGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .title {
+    font-size: 42px;
+  }
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: var(--ui-color-muted);
+  font-size: 12px;
+}
+
+.mono {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+.card {
+  border: 1px solid var(--ui-color-border);
+  border-radius: 12px;
+  padding: 16px;
+  background: var(--ui-color-bg);
+}
+
+.grid3 {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+@media (max-width: 960px) {
+  .grid3 {
+    grid-template-columns: 1fr;
+  }
+}
+
+.muted {
+  opacity: .85;
+}
+
+.center {
+  text-align: center;
+}

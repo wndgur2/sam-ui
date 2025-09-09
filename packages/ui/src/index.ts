@@ -25,3 +25,8 @@ export { Modal } from "./components/Modal/Modal";
 export { breakpoints } from "./foundations/breakpoints";
 export type { Responsive } from "./system/responsive";
 
+export { Divider } from "./components/Divider/Divider";
+export { Textarea } from "./components/Textarea/Textarea";
+export { Card } from "./components/Card/Card";
+export { Progress } from "./components/Progress/Progress";
+export { Avatar } from "./components/Avatar/Avatar";
