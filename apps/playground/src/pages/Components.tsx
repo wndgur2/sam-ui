@@ -26,6 +26,7 @@ import {
   Alert,
   Text,
   Heading,
+  Slider,
 } from "@sam/ui";
 import { ThemeControls } from "../sections/ThemeControls";
 import { useEffect, useState } from "react";
@@ -37,7 +38,9 @@ export function ComponentsPage() {
   const [btnSize, setBtnSize] = useState<"sm" | "md" | "lg">("md");
   const location = useLocation();
   const navigate = useNavigate();
-  const [alertVariant, setAlertVariant] = useState<"info"|"success"|"warning"|"danger">("info");
+  const [alertVariant, setAlertVariant] = useState<"info" | "success" | "warning" | "danger">(
+    "info",
+  );
   const [alertText, setAlertText] = useState("Useful information.");
   const [progress, setProgress] = useState(62);
 
@@ -51,7 +54,21 @@ export function ComponentsPage() {
 
   useEffect(() => {
     const ids = [
-      "typography","button","iconbutton","textinput","select","badge","spinner","alert","tabs","layout","modal","divider","card","progress","avatar"
+      "typography",
+      "button",
+      "iconbutton",
+      "textinput",
+      "select",
+      "badge",
+      "spinner",
+      "alert",
+      "tabs",
+      "layout",
+      "modal",
+      "divider",
+      "card",
+      "progress",
+      "avatar",
     ];
     const elements = ids.map((id) => document.getElementById(id)).filter(Boolean) as HTMLElement[];
     if (elements.length === 0) return;
@@ -116,30 +133,20 @@ export function ComponentsPage() {
         <div style={{ height: 12 }} />
         <h3>Playground</h3>
         <Flex gap={12} align="center" style={{ flexWrap: "wrap" }}>
-          <label>
-            Variant:
-            <select
-              value={btnVariant}
-              onChange={(e) => setBtnVariant(e.target.value as any)}
-              style={{ marginLeft: 8 }}
-            >
-              <option value="solid">solid</option>
-              <option value="outline">outline</option>
-              <option value="ghost">ghost</option>
-            </select>
-          </label>
-          <label>
-            Size:
-            <select
-              value={btnSize}
-              onChange={(e) => setBtnSize(e.target.value as any)}
-              style={{ marginLeft: 8 }}
-            >
-              <option value="sm">sm</option>
-              <option value="md">md</option>
-              <option value="lg">lg</option>
-            </select>
-          </label>
+          <Select
+            label="Variant"
+            value={btnVariant}
+            onChange={(e) => setBtnVariant(e.target.value as any)}
+          >
+            <option value="solid">solid</option>
+            <option value="outline">outline</option>
+            <option value="ghost">ghost</option>
+          </Select>
+          <Select label="Size" value={btnSize} onChange={(e) => setBtnSize(e.target.value as any)}>
+            <option value="sm">sm</option>
+            <option value="md">md</option>
+            <option value="lg">lg</option>
+          </Select>
           <Button variant={btnVariant} size={btnSize}>
             Preview
           </Button>
@@ -183,44 +190,31 @@ export function ComponentsPage() {
         <h2>Spinner & Progress</h2>
         <Spinner />
         <div style={{ height: 12 }} />
-        <label>
-          Value: {progress}%
-          <input
-            type="range"
-            min={0}
-            max={100}
-            value={progress}
-            onChange={(e) => setProgress(parseInt(e.target.value))}
-            style={{ marginLeft: 8 }}
-          />
-        </label>
+        <Flex gap={12} align="center">
+          <span>Value: {progress}%</span>
+          <Slider value={progress} onChange={setProgress} ariaLabel="Progress value" />
+        </Flex>
         <Progress value={progress} />
       </section>
       <section id="alert">
         <h2>Alert</h2>
         <Stack gap={8}>
           <Flex gap={12} align="center" style={{ flexWrap: "wrap" }}>
-            <label>
-              Variant:
-              <select
-                value={alertVariant}
-                onChange={(e) => setAlertVariant(e.target.value as any)}
-                style={{ marginLeft: 8 }}
-              >
-                <option value="info">info</option>
-                <option value="success">success</option>
-                <option value="warning">warning</option>
-                <option value="danger">danger</option>
-              </select>
-            </label>
-            <label>
-              Message:
-              <input
-                value={alertText}
-                onChange={(e) => setAlertText(e.target.value)}
-                style={{ marginLeft: 8 }}
-              />
-            </label>
+            <Select
+              label="Variant"
+              value={alertVariant}
+              onChange={(e) => setAlertVariant(e.target.value as any)}
+            >
+              <option value="info">info</option>
+              <option value="success">success</option>
+              <option value="warning">warning</option>
+              <option value="danger">danger</option>
+            </Select>
+            <TextInput
+              label="Message"
+              value={alertText}
+              onChange={(e) => setAlertText(e.target.value)}
+            />
           </Flex>
           <Card>
             <Alert title={alertVariant.toUpperCase()} variant={alertVariant}>

@@ -16,4 +16,3 @@ export function Text({ as: As = "p", size = "md", muted, style, ...rest }: TextP
   };
   return <As style={styles} {...rest} />;
 }
-

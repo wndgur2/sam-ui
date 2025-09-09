@@ -1,3 +1,7 @@
-html { scroll-behavior: smooth; }
-[id] { scroll-margin-top: 72px; }
+html {
+  scroll-behavior: smooth;
+}
 
+[id] {
+  scroll-margin-top: 72px;
+}
